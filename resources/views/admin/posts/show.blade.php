@@ -7,7 +7,6 @@
             <h1>{{ $post->title }}</h1>
             <h6>{{ $post->slug }}</h6>
             <p>{{ $post->content }}</p>
-            
         </div>
     </div>
 </div>
