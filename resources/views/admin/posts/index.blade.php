@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="container-fluid mt-4">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-4">
         <div class="col">
             <h1>Tutti i progetti</h1>
+
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-success">Aggiungi progetto</a>
         </div>
     </div>
     <div class="row">
