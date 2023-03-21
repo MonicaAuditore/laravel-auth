@@ -51,7 +51,7 @@ class PostController extends Controller
         'content'=> $data['content'],
        ]);
 
-       return redirect()->route('admin.posts.show', $newProject->id);
+       return redirect()->route('admin.posts.show', $newProject->id)->with('success', 'Progetto aggiunto con successo');
     }
 
     /**
