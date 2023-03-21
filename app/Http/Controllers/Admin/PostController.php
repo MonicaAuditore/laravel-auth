@@ -7,6 +7,9 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
+// Helpers
+use Illuminate\Support\Str;
+
 class PostController extends Controller
 {
     /**
@@ -38,7 +41,17 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+       $data = $request->validate($request->rules());
+
+       $slug = Str::slug($data['title']);
+
+       $newProject = Post::create([
+        'title'=> $data['title'],
+        'slug'=> $slug,
+        'content'=> $data['content'],
+       ]);
+
+       return redirect()->route('admin.posts.show', $newProject->id);
     }
 
     /**

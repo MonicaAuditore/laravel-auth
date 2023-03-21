@@ -7,6 +7,21 @@
             <h1>Crea progetto</h1>
         </div>
     </div>
+    @if ($errors->any())
+    <div class="row mb-4">
+        <div class="col">
+            <div class="alert altert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="row mb-4">
         <div class="col">
             <form action="{{ route('admin.posts.store') }}" method="POST">
