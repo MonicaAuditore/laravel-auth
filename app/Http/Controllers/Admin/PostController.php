@@ -88,10 +88,10 @@ class PostController extends Controller
         $data = $request->validate($request->rules());
  
         $post->title = $data['title'];
-    $post->content = $data['content'];
-    $post->save();
+        $post->content = $data['content'];
+        $post->save();
 
-    return redirect()->route('admin.posts.show', $post->id)->with('success', 'Progetto aggiornato con successo');
+        return redirect()->route('admin.posts.show', $post->id)->with('success', 'Progetto aggiornato con successo');
      
     }
 
@@ -103,6 +103,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
+
     }
 }

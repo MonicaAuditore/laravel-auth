@@ -29,8 +29,18 @@
               <td>
               <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-info">Dettagli</a>
               <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-warning">Modifica</a>
-              <a href="#" class="btn btn-danger">Elimina</a>
-              </td>
+
+              <form class="d-inline-block"
+                action="{{ route('admin.posts.destroy', $post->id) }}" 
+                method="POST"
+                onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');">
+                @csrf
+              
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Elimina</button>
+              </form>
+
+            </td>
             </tr>
             @endforeach
           </tbody>
