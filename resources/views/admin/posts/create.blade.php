@@ -24,7 +24,7 @@
     @endif
     <div class="row mb-4">
         <div class="col">
-            <form action="{{ route('admin.posts.store') }}" method="POST">
+            <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -42,7 +42,7 @@
                     class="form-control" 
                     name="img" 
                     id="img" 
-                    value="{{ old('img') }}" 
+                    
                     accept="image/*"
                     placeholder="Inserisci l'immagine del progetto...">
                 </div>
