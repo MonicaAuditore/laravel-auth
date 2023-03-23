@@ -13,6 +13,7 @@
         <div class="col">
             <h1>{{ $post->title }}</h1>
             <h6>{{ $post->slug }}</h6>
+            <img src="{{ asset('storage'.$post->img) }}" style="height: 250px;" alt="">
             <p>{{ $post->content }}</p>
         </div>
     </div>
