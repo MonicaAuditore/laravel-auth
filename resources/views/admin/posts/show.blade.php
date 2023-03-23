@@ -13,7 +13,13 @@
         <div class="col">
             <h1>{{ $post->title }}</h1>
             <h6>{{ $post->slug }}</h6>
-            <img src="{{ asset('storage'.$post->img) }}" style="height: 250px;" alt="">
+
+            @if ($post->img)
+            <div>
+                <img src="{{ asset('storage'.$post->img) }}" style="height: 250px;" alt="">
+            </div>
+            @endif
+
             <p>{{ $post->content }}</p>
         </div>
     </div>
