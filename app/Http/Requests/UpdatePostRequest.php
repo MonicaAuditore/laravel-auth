@@ -32,7 +32,8 @@ class UpdatePostRequest extends FormRequest
                 Rule::unique('posts')->ignore($this->post->id),
                 'max:128'
             ],
-            'content'=> 'required'
+            'content'=> 'required',
+            'img'=>'nullable|image|max:2048'
         ];
     }
 }

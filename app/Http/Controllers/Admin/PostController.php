@@ -94,9 +94,19 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $data = $request->validate($request->rules());
+
+        if(array_key_exists('img', $data)) {
+            $imgPath = Storage::put('uploads', $data['img']);
+            $data['img'] = $imgPath;
+
+            if($post->img) {
+                Storage::delete($post->img);
+            }
+           }
  
         $post->title = $data['title'];
         $post->content = $data['content'];
+        $post->img = $data['img'];
         $post->save();
 
         return redirect()->route('admin.posts.show', $post->id)->with('success', 'Progetto aggiornato con successo');
