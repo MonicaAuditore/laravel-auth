@@ -41,10 +41,20 @@
                     <label for="img" class="form-label">Immagine del progetto</label>
 
                     @if ($post->img)
-                    <div class="mb-4">
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="delete_img" id="delete_img">
+                        <label class="form-check-label" for="delete_img">
+                          Cancella immagine del progetto
+                        </label>
+                    </div>
+
+                    <div class="mb-2">
                         <img src="{{ asset('storage/'.$post->img) }}" style="height: 250px;" alt="">
                     </div>
                     @endif
+
+                   
 
                     <input 
                     type="file" 

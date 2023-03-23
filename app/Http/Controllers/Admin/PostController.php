@@ -94,8 +94,16 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $data = $request->validate($request->rules());
+        
 
-        if(array_key_exists('img', $data)) {
+        if (array_key_exists('delete_img', $data)) {
+            if($post->img) 
+            Storage::delete($post->img);
+            $post->img = null;
+            $post->save();
+        }
+
+        else if(array_key_exists('img', $data)) {
             $imgPath = Storage::put('uploads', $data['img']);
             $data['img'] = $imgPath;
 
