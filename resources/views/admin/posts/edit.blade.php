@@ -37,7 +37,23 @@
                     <label for="content" class="form-label">Spiegazione del progetto *</label>
                     <textarea class="form-control" name="content" id="content" rows="15" required placeholder="Inserisci la spiegazione del progetto...">{{ old('content', $post->content) }}</textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Immagine del progetto</label>
 
+                    @if ($post->img)
+                    <div class="mb-4">
+                        <img src="{{ asset('storage/'.$post->img) }}" style="height: 250px;" alt="">
+                    </div>
+                    @endif
+
+                    <input 
+                    type="file" 
+                    class="form-control" 
+                    name="img" 
+                    id="img" 
+                    accept="image/*"
+                    placeholder="Inserisci l'immagine del progetto...">
+                </div>
                 <div>
                     <p>N.B. I campi contrassegnati con * sono obbligatori.</p>
                 </div>
