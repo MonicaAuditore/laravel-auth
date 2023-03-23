@@ -16,7 +16,7 @@
 
             @if ($post->img)
             <div>
-                <img src="{{ asset('storage'.$post->img) }}" style="height: 250px;" alt="">
+                <img src="{{ asset('storage/'.$post->img) }}" style="height: 250px;" alt="">
             </div>
             @endif
 

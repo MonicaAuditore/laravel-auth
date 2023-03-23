@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePostRequest;
 
 // Helpers
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -43,12 +44,19 @@ class PostController extends Controller
     {
        $data = $request->validate($request->rules());
 
+       if(array_key_exists('img', $data)) {
+        $imgPath = Storage::put('uploads', $data['img']);
+        $data['img'] = $imgPath;
+       }
+   
+
        $slug = Str::slug($data['title']);
 
        $newProject = Post::create([
         'title'=> $data['title'],
         'slug'=> $slug,
         'content'=> $data['content'],
+        'img'=> $data['img'],
        ]);
 
        return redirect()->route('admin.posts.show', $newProject->id)->with('success', 'Progetto aggiunto con successo');
